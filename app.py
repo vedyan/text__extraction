@@ -3,9 +3,10 @@ import fitz
 import requests
 import re
 from utils import extract_projects, extract_experience, extract_skills
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app, resources={r"/*": {"origins": "https://app.rework.club"}})
 
 def extract_mobile_number(text):
     mobile_number = re.findall(r'[7-9][0-9]{9}', text)
